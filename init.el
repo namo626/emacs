@@ -55,3 +55,21 @@
 (setq org-agenda-include-diary t)
 ;(setq calendar-mark-diary-entries-flag t)
 
+;; google cal
+(setq mark-diary-entries-in-calendar t)
+(defun getcal (url)
+  "Download ics file and add to diary"
+  (let ((tmpfile (url-file-local-copy url)))
+    (icalendar-import-file tmpfile "~/Dropbox/diary" t)
+    (kill-buffer (car (last (split-string tmpfile "/"))))
+    )
+  )
+(setq google-calendars '(
+			 "https://calendar.google.com/calendar/ical/namo26june%40gmail.com/private-8437d83d32b741c004f7e21ddd6de4a6/basic.ics"
+                         ))
+(defun getcals ()
+  (interactive)
+  (find-file "~/Dropbox/diary")
+  (flush-lines "^[& ]")
+  (dolist (url google-calendars) (getcal url))
+  (kill-buffer "diary"))
