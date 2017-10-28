@@ -51,6 +51,7 @@
 (add-hook 'diary-display-hook 'fancy-diary-display)
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 
+
 (setq org-agenda-include-diary t)
 ;(setq calendar-mark-diary-entries-flag t)
 
