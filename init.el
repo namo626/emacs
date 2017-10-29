@@ -10,6 +10,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-file-apps
+   (quote
+    ((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "okular %s"))))
  '(org-hide-emphasis-markers nil)
  '(package-selected-packages (quote (org-edna racket-mode))))
 (custom-set-faces
@@ -55,8 +61,17 @@
 (setq org-agenda-include-diary t)
 ;(setq calendar-mark-diary-entries-flag t)
 
+(defun kill-to-end-of-buffer() "Deletes all lines after the current line"
+  (interactive)
+  (progn
+    (forward-line 1)
+    (delete-region (point) (point-max))))
+
 ;; google cal
 (setq mark-diary-entries-in-calendar t)
+(add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
+(add-hook 'diary-list-entries-hook 'diary-sort-entries t)
+(add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
 (defun getcal (url)
   "Download ics file and add to diary"
   (let ((tmpfile (url-file-local-copy url)))
@@ -70,6 +85,9 @@
 (defun getcals ()
   (interactive)
   (find-file "~/Dropbox/diary")
-  (flush-lines "^[& ]")
+  (flush-lines "^.")
   (dolist (url google-calendars) (getcal url))
+  (beginning-of-buffer)
+  (replace-string "&" "")
+  (save-buffer)
   (kill-buffer "diary"))
