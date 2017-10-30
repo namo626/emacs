@@ -17,6 +17,9 @@
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "okular %s"))))
  '(org-hide-emphasis-markers nil)
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages (quote (org-edna racket-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -37,7 +40,8 @@
 ;;(setq org-log-done t)
 
 (setq org-hide-emphasis-markers t)
-(setq org-agenda-files (list "~/Dropbox/work.org"))
+(setq org-agenda-files (list "~/Dropbox/work.org"
+			     "~/Dropbox/personal.org"))
 
 ;;evil mode
 (add-to-list 'load-path "~/.emacs.d/evil")
@@ -91,3 +95,9 @@
   (replace-string "&" "")
   (save-buffer)
   (kill-buffer "diary"))
+
+;;longer agenda
+(setq org-agenda-span 10
+      org-agenda-start-day "-3d")
+
+(setq-default org-list-indent-offset 4)
