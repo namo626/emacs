@@ -95,7 +95,7 @@
  '(org-tags-column 90)
  '(package-selected-packages
    (quote
-    (company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
+    (magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -148,12 +148,27 @@
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
+(load-theme 'solarized-dark)
+
+;;evil mode
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+(evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'help-mode 'emacs)
+(evil-set-initial-state 'haskell-interactive-mode 'emacs)
+  
 
 ;;haskell-setup
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+;;keybindings
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+(define-key interactive-haskell-mode-map (kbd "C-c C-c") 'ghc-toggle-check-command)
+(define-key haskell-mode-map (kbd "<f3>") 'ghc-display-errors)
+
 (let ((my-stack-path (expand-file-name "/var/namo/.local/bin")))
   (setenv "PATH" (concat my-stack-path ":" (getenv "PATH")))
   (add-to-list 'exec-path my-stack-path))
@@ -167,6 +182,8 @@
 (add-hook 'haskell-mode-hook 'company-mode)
 (add-to-list 'company-backends 'company-ghc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;;evil haskell fix
 (defun haskell-evil-open-above ()
   (interactive)
   (evil-digit-argument-or-evil-beginning-of-line)
@@ -198,10 +215,7 @@
 (setq org-agenda-files (list "~/Dropbox/work.org"
 			     "~/Dropbox/personal.org"))
 
-;;evil mode
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
+
 
 ;;increase LaTeX size
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
@@ -255,10 +269,25 @@
 (setq org-agenda-span 10
       org-agenda-start-day "-3d")
 
-
+;;line numbers in appropriate buffers
+(require 'linum)
 (require 'linum-relative)
-;; (global-linum-mode t)
-(add-hook 'prog-mode-hook 'linum-on) ;;prevents pdf from freezing
+(setq linum-disabled-modes-list '(speedbar-mode
+				  org-mode
+				  compilation-mode
+				  dired-mode
+				  doc-view-mode
+				  pdf-virtual-view-mode))
+;;overwrite default linum-on
+(defun linum-on ()
+  (unless (or (minibufferp)
+	      (member major-mode linum-disabled-modes-list)
+	      (and (not (eq (buffer-name) "*scratch*"))
+		   (string-match "*" (buffer-name))))
+    (linum-mode t)))
+(global-linum-mode t)
+;;(setq linum-eager nil)
+;;(add-hook 'prog-mode-hook 'linum-on) ;;prevents pdf from freezing
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -266,8 +295,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "PfEd" :family "Meslo LG S for Powerline"))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold)))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))))
+ '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code")))))
 
 ;org-mode capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
+
+;;winner shortcuts
+(global-set-key [f1] 'winner-undo)
+(global-set-key [f2] 'winner-redo)
