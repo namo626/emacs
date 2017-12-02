@@ -17,7 +17,6 @@
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(beacon-color "#f2777a")
- '(company-ghc-hoogle-command "hoogle")
  '(company-ghc-show-info t)
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
@@ -30,7 +29,9 @@
     ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "7f3ef7724515515443f961ef87fee655750512473b1f5bf890e2dc7e065f240c" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "125fd2180e880802ae98b85f282b17f0aa8fa6cb9fc4f33d7fb19a38c40acef0" "dc9a8d70c4f94a28aafc7833f8d05667601968e6c9bf998791c39fcb3e4679c9" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" default)))
  '(fci-rule-color "#eee8d5")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
+;; '(haskell-font-lock-symbols t)
  '(haskell-hoogle-command nil)
+ '(haskell-interactive-popup-errors nil)
  '(haskell-process-path-ghci "stack")
  '(haskell-process-type (quote cabal-repl))
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
@@ -95,7 +96,7 @@
  '(org-tags-column 90)
  '(package-selected-packages
    (quote
-    (magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
+    (intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -149,6 +150,8 @@
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (load-theme 'solarized-dark)
+(ido-mode 1)
+(setq ido-default-buffer-method 'selected-window)
 
 ;;evil mode
 (add-to-list 'load-path "~/.emacs.d/evil")
@@ -160,14 +163,19 @@
   
 
 ;;haskell-setup
+(require 'haskell-mode)
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
+;;(add-hook 'haskell-mode-hook 'intero-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;;(eval-after-load 'haskell-mode
+;;  '(define-key interactive-haskell-mode-map (kbd "C-c C-c") 'ghc-toggle-check-command))
 
 ;;keybindings
 (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-(define-key interactive-haskell-mode-map (kbd "C-c C-c") 'ghc-toggle-check-command)
+(define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
 (define-key haskell-mode-map (kbd "<f3>") 'ghc-display-errors)
+;;(define-key haskell-mode-map (kbd "M-.") 'haskell-mode-jump-to-def)
 
 (let ((my-stack-path (expand-file-name "/var/namo/.local/bin")))
   (setenv "PATH" (concat my-stack-path ":" (getenv "PATH")))
@@ -178,6 +186,8 @@
 (setq haskell-process-type 'stack-ghci)
 (setq haskell-process-path-ghci "stack")
 (add-hook 'haskell-mode-hook #'hindent-mode)
+
+;;autocompletion
 (require 'company)
 (add-hook 'haskell-mode-hook 'company-mode)
 (add-to-list 'company-backends 'company-ghc)
@@ -203,6 +213,8 @@
 (set-default 'tab-always-indent 'complete)
 (show-paren-mode 1)
 
+;;keybindings
+(global-set-key "\M- " 'hippie-expand)
 (global-set-key (kbd "M-o") 'other-window)
 
 (require 'org)
@@ -303,5 +315,5 @@
 (define-key global-map "\C-cc" 'org-capture)
 
 ;;winner shortcuts
-(global-set-key [f1] 'winner-undo)
-(global-set-key [f2] 'winner-redo)
+(global-set-key [f4] 'winner-undo)
+(global-set-key [f5] 'winner-redo)
