@@ -29,7 +29,7 @@
     ("628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "7f3ef7724515515443f961ef87fee655750512473b1f5bf890e2dc7e065f240c" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "125fd2180e880802ae98b85f282b17f0aa8fa6cb9fc4f33d7fb19a38c40acef0" "dc9a8d70c4f94a28aafc7833f8d05667601968e6c9bf998791c39fcb3e4679c9" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" default)))
  '(fci-rule-color "#eee8d5")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
-;; '(haskell-font-lock-symbols t)
+ '(haskell-font-lock-symbols t)
  '(haskell-hoogle-command nil)
  '(haskell-interactive-popup-errors nil)
  '(haskell-process-path-ghci "stack")
@@ -96,7 +96,7 @@
  '(org-tags-column 90)
  '(package-selected-packages
    (quote
-    (intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
+    (slime intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -192,6 +192,7 @@
 (add-hook 'haskell-mode-hook 'company-mode)
 (add-to-list 'company-backends 'company-ghc)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'c-mode-common-hook 'company-mode)
 
 ;;evil haskell fix
 (defun haskell-evil-open-above ()
@@ -210,12 +211,20 @@
 (evil-define-key 'normal haskell-mode-map "o" 'haskell-evil-open-below
   "O" 'haskell-evil-open-above)
 
+;;Common Lisp
+(require 'slime-autoloads)
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
+
 (set-default 'tab-always-indent 'complete)
 (show-paren-mode 1)
 
 ;;keybindings
 (global-set-key "\M- " 'hippie-expand)
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "<f9>") (kbd "C-u - 3 C-x ^"))
+(global-set-key (kbd "<f8>") (kbd "C-- - 3 C-x ^"))
+
 
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
@@ -306,7 +315,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "PfEd" :family "Meslo LG S for Powerline"))))
  '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))))
- '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code")))))
+ '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code"))))
+ '(slime-repl-inputed-output-face ((t (:foreground "#b58900")))))
 
 ;org-mode capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
