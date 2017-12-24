@@ -160,6 +160,7 @@
 (evil-set-initial-state 'dired-mode 'emacs)
 (evil-set-initial-state 'help-mode 'emacs)
 (evil-set-initial-state 'haskell-interactive-mode 'emacs)
+;;(define-key evil-normal-state-map "\C-r" 'undo-tree-redo)
   
 
 ;;haskell-setup
