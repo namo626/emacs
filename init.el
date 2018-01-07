@@ -96,7 +96,7 @@
  '(org-tags-column 90)
  '(package-selected-packages
    (quote
-    (slime intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
+    (auctex slime intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna racket-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
@@ -186,7 +186,7 @@
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 (setq haskell-process-type 'stack-ghci)
 (setq haskell-process-path-ghci "stack")
-(add-hook 'haskell-mode-hook #'hindent-mode)
+;;(add-hook 'haskell-mode-hook #'hindent-mode)
 
 ;;autocompletion
 (require 'company)
@@ -241,6 +241,7 @@
 
 ;;increase LaTeX size
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+(setq TeX-PDF-mode t)
 
 ;;diary location
 (setq diary-file "~/Dropbox/diary")
@@ -315,7 +316,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 122 :width normal :foundry "PfEd" :family "Meslo LG S for Powerline"))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))))
+ '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))) t)
  '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code"))))
  '(slime-repl-inputed-output-face ((t (:foreground "#b58900")))))
 
@@ -325,4 +326,10 @@
 
 ;;winner shortcuts
 (global-set-key [f4] 'winner-undo)
-(global-set-key [f5] 'winner-redo)
+;;(global-set-key [f5] 'winner-redo)
+
+;;prettifier
+;;(defun my-add-pretty-lambda ()
+;;  "convert stuff to unicode"
+;;  (setq prettify-symbols-alist '(("lambda" . 955))))
+;;(add-hook 'racket-mode-hook #'racket-unicode-input-method-enable)
