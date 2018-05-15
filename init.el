@@ -23,39 +23,16 @@
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "7f3ef7724515515443f961ef87fee655750512473b1f5bf890e2dc7e065f240c" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "125fd2180e880802ae98b85f282b17f0aa8fa6cb9fc4f33d7fb19a38c40acef0" "dc9a8d70c4f94a28aafc7833f8d05667601968e6c9bf998791c39fcb3e4679c9" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" default)))
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "7f3ef7724515515443f961ef87fee655750512473b1f5bf890e2dc7e065f240c" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "125fd2180e880802ae98b85f282b17f0aa8fa6cb9fc4f33d7fb19a38c40acef0" "dc9a8d70c4f94a28aafc7833f8d05667601968e6c9bf998791c39fcb3e4679c9" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" default)))
  '(fci-rule-color "#073642")
  '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
  '(haskell-hoogle-command nil)
  '(haskell-interactive-popup-errors nil)
  '(haskell-process-path-ghci "stack")
  '(haskell-process-type (quote cabal-repl))
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
- '(highlight-symbol-foreground-color "#93a1a1")
- '(highlight-tail-colors
-   (quote
-    (("#073642" . 0)
-     ("#546E00" . 20)
-     ("#00736F" . 30)
-     ("#00629D" . 50)
-     ("#7B6000" . 60)
-     ("#8B2C02" . 70)
-     ("#93115C" . 85)
-     ("#073642" . 100))))
- '(hl-bg-colors
-   (quote
-    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(magit-diff-use-overlays nil)
  '(menu-bar-mode nil)
  '(nrepl-message-colors
@@ -95,23 +72,12 @@
  '(org-tags-column 90)
  '(package-selected-packages
    (quote
-    (sicp racket-mode auctex slime intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna)))
+    (auto-complete matlab-mode elpy sicp racket-mode auctex slime intero magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(server-mode t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#839496" 0.2))
- '(solarized-distinct-doc-face t)
- '(solarized-distinct-fringe-background t)
- '(solarized-emphasize-indicators nil)
- '(solarized-height-minus-1 1.0)
- '(solarized-height-plus-1 1.0)
- '(solarized-height-plus-2 1.0)
- '(solarized-height-plus-3 1.0)
- '(solarized-height-plus-4 1.0)
- '(solarized-high-contrast-mode-line t)
- '(solarized-scale-org-headlines nil)
- '(solarized-use-variable-pitch nil)
  '(temp-buffer-resize-mode t)
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
@@ -148,7 +114,7 @@
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
-(load-theme 'solarized-dark)
+
 (ido-mode 1)
 (setq ido-default-buffer-method 'selected-window)
 
@@ -313,19 +279,20 @@
 		   (string-match "*" (buffer-name))))
     (linum-mode t)))
 (global-linum-mode t)
+(linum-relative-toggle)
 ;;(setq linum-eager nil)
 ;;(add-hook 'prog-mode-hook 'linum-on) ;;prevents pdf from freezing
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
- '(font-lock-comment-face ((t (:foreground "#6c71c4"))))
- '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))))
- '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code"))))
- '(slime-repl-inputed-output-face ((t (:foreground "#b58900")))))
+;;(custom-set-faces
+;; ;; custom-set-faces was added by Custom.
+;; ;; If you edit it by hand, you could mess it up, so be careful.
+;; ;; Your init file should contain only one such instance.
+;; ;; If there is more than one, they won't work right.
+;; '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 149 :width normal :foundry "PfEd" :family "Inconsolata for Powerline"))))
+;; '(font-lock-comment-face ((t (:foreground "#6c71c4"))))
+;; '(org-agenda-date-today ((t (:inherit org-agenda-date :background "#268bd2" :foreground "#002b36" :inverse-video t :overline nil :weight bold))))
+;; '(org-verbatim ((t (:foreground "#2AA198" :height 130 :width normal :foundry "PfEd" :family "Courier Prime Code"))))
+;; '(slime-repl-inputed-output-face ((t (:foreground "#b58900")))))
 
 ;org-mode capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -340,3 +307,15 @@
 ;;  "convert stuff to unicode"
 ;;  (setq prettify-symbols-alist '(("lambda" . 955))))
 ;;(add-hook 'racket-mode-hook #'racket-unicode-input-method-enable)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#3F3F3F" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 145 :width normal :foundry "PfEd" :family "Inconsolata for Powerline")))))
+
+
+;;(setq auto-mode-alist
+      ;;(cons
+       ;;'("\\.m$" . octave-mode)
+       ;;auto-mode-alist))
