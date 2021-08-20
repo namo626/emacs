@@ -30,7 +30,8 @@
 
 ;; Fonts
 (if (string= (system-name) "thinkpad")
-  (set-face-attribute 'default nil :font "Droid Sans Mono for Powerline-12")
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono for Powerline-11" :weight 'normal)
+  ;(set-face-attribute 'default nil :font "Source Code Pro Semibold-11")
   (set-face-attribute 'default nil :font "Office Code Pro-12"))
 
 ;; Line number color

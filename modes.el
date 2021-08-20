@@ -97,3 +97,5 @@
 (setq compilation-window-height 10)
 (winner-mode t)
 (global-evil-surround-mode t)
+
+(set-default 'preview-scale-function 1.5)
