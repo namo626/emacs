@@ -8,7 +8,7 @@
 (setq solarized-high-contrast-mode-line t)
 
 ;; Use less bolding
-(setq solarized-use-less-bold t)
+(setq solarized-use-less-bold nil)
 
 ;; Use more italics
 (setq solarized-use-more-italic t)
@@ -27,19 +27,29 @@
 (setq solarized-height-plus-4 1.0)
 
 (load-theme 'solarized-light t)
+;(load-theme 'solarized-dark t)
 
 ;; Fonts
 (if (string= (system-name) "thinkpad")
-  (set-face-attribute 'default nil :font "DejaVu Sans Mono for Powerline-11" :weight 'normal)
-  ;(set-face-attribute 'default nil :font "Source Code Pro Semibold-11")
-  (set-face-attribute 'default nil :font "Office Code Pro-12"))
+  ;(set-face-attribute 'default nil :font "Hack" :height 105 :weight 'normal)
+  ;(set-face-attribute 'default nil :font "IBM Plex Mono" :height 105 :weight 'medium)
+  (set-face-attribute 'default nil :font "Input Sans Narrow" :height 105 :weight 'normal)
+  ;(set-face-attribute 'default nil :font "M PLUS Code Latin 50" :height 105 :weight 'regular)
+  ;(set-face-attribute 'default nil :font "Source Code Pro-11" :weight 'medium)
+  (set-face-attribute 'default nil :font "Office Code Pro-11"))
 
 ;; Line number color
-(custom-set-faces
+;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:background "#fdf6e3" :foreground "#93a1a1" :slant normal))))
- '(linum ((t (:background "#eee8d5" :foreground "dim gray" :underline nil :weight normal))))
- '(linum-relative-current-face ((t (:inherit linum)))))
+; '(font-lock-comment-face ((t (:background "#fdf6e3" :foreground "#93a1a1" :slant normal))))
+; '(linum ((t (:background "#eee8d5" :foreground "dim gray" :underline nil :weight normal))))
+; '(linum-relative-current-face ((t (:inherit linum)))))
+
+(global-prettify-symbols-mode 1)
+
+;; Prettify symbols
+(setq prettify-symbols-alist
+      '((">=" . ?≥)))

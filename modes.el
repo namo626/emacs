@@ -99,3 +99,7 @@
 (global-evil-surround-mode t)
 
 (set-default 'preview-scale-function 1.5)
+
+
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control))))
