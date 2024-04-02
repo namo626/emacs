@@ -81,8 +81,9 @@
 
 ;; PYTHON --------------------------------------------------------------
 ; http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/
-(setq python-shell-interpreter "ipython")
-(setq python-shell-interpreter-args "--simple-prompt -i")
+;(setq python-shell-interpreter "ipython")
+;(setq python-shell-interpreter-args "--simple-prompt -i")
+(setq python-shell-interpreter "~/miniconda3/envs/chg/bin/ipython")
 
 
 
@@ -103,3 +104,19 @@
 
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control))))
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+
+(setq-default TeX-engine 'xetex)
+
+;; CMAKE
+(setq load-path (cons (expand-file-name "/dir/with/cmake-mode") load-path))
+(require 'cmake-mode)
+
+;; IMENU
+(imenu-list-minor-mode)
+(global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
+;; (setq imenu-list-after-jump-hook nil)
+
+(with-eval-after-load 'evil-maps (define-key evil-motion-state-map [down-mouse-1] nil))

@@ -8,7 +8,7 @@
 (setq solarized-high-contrast-mode-line t)
 
 ;; Use less bolding
-(setq solarized-use-less-bold nil)
+(setq solarized-use-less-bold t)
 
 ;; Use more italics
 (setq solarized-use-more-italic t)
@@ -30,13 +30,13 @@
 ;(load-theme 'solarized-dark t)
 
 ;; Fonts
-(if (string= (system-name) "thinkpad")
   ;(set-face-attribute 'default nil :font "Hack" :height 105 :weight 'normal)
   ;(set-face-attribute 'default nil :font "IBM Plex Mono" :height 105 :weight 'medium)
-  (set-face-attribute 'default nil :font "Input Sans Narrow" :height 105 :weight 'normal)
+;(set-face-attribute 'default nil :font "Input Mono Narrow-17" :weight 'medium)
+(set-face-attribute 'default nil :font "JetBrains Mono-10" :weight 'normal)
   ;(set-face-attribute 'default nil :font "M PLUS Code Latin 50" :height 105 :weight 'regular)
-  ;(set-face-attribute 'default nil :font "Source Code Pro-11" :weight 'medium)
-  (set-face-attribute 'default nil :font "Office Code Pro-11"))
+  ;(set-face-attribute 'default nil :font "Source Code Pro-17" :weight 'medium)
+  ;(set-face-attribute 'default nil :font "Office Code Pro-11"))
 
 ;; Line number color
 ;(custom-set-faces

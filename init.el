@@ -65,7 +65,7 @@
  '(org-reverse-note-order t)
  '(org-tags-column 90)
  '(package-selected-packages
-   '(vlf caps-lock c-eldoc ledger-mode evil-surround dante markdown-mode company-jedi solarized-theme vimish-fold ein company-auctex auto-complete-auctex auto-complete matlab-mode sicp racket-mode auctex slime magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna))
+   '(imenu-list cmake-mode dockerfile-mode vlf caps-lock c-eldoc ledger-mode evil-surround dante markdown-mode company-jedi solarized-theme vimish-fold ein company-auctex auto-complete-auctex auto-complete matlab-mode sicp racket-mode auctex slime magit company-ghc hindent ghc haskell-mode pdf-tools color-theme-sanityinc-tomorrow gruvbox-theme color-theme-sanityinc-solarized hc-zenburn-theme zenburn-theme linum-relative org-edna))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(server-mode t)
